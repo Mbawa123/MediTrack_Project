@@ -1,4 +1,4 @@
-﻿package com.meditrack.model.person;
+package com.meditrack.model.person;
 
 public class StaffPatient extends Patient {
     private String employeeId;

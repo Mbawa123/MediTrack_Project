@@ -1,4 +1,4 @@
-﻿package com.meditrack.model.person;
+package com.meditrack.model.person;
 
 public abstract class MedicalStaff extends Person implements StaffAction {
     private String staffId;

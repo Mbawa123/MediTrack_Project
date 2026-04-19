@@ -1,4 +1,4 @@
-﻿package com.meditrack.model.record;
+package com.meditrack.model.record;
 
 public class Vitals {
     private String bloodPressure;

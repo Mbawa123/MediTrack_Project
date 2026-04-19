@@ -1,4 +1,4 @@
-﻿package com.meditrack.model.record;
+package com.meditrack.model.record;
 
 import java.util.ArrayList;
 import java.util.List;

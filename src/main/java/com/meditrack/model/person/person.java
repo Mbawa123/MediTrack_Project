@@ -1,4 +1,4 @@
-﻿package com.meditrack.model.person;
+package com.meditrack.model.person;
 
 public abstract class Person {
     private String id;

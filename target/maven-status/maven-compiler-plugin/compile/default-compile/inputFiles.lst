@@ -1,3 +1,7 @@
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\api\MediTrackApi.java
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\exception\ForbiddenException.java
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\exception\NotFoundException.java
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\exception\ValidationException.java
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\Main.java
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\model\appointment\Appointment.java
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\model\person\Doctor.java
@@ -12,3 +16,7 @@ C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\mo
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\model\record\MedicalRecord.java
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\model\record\Prescription.java
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\model\record\Vitals.java
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\AppointmentService.java
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\DataStore.java
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\PatientService.java
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\StaffService.java

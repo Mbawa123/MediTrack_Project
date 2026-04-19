@@ -1,4 +1,4 @@
-﻿package com.meditrack;
+package com.meditrack;
 
 import com.meditrack.model.appointment.Appointment;
 import com.meditrack.model.person.*;

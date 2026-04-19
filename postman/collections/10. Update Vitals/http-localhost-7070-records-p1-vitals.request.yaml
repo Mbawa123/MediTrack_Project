@@ -1,0 +1,26 @@
+$kind: http-request
+name: http://localhost:7070/records/p1/vitals
+url: http://localhost:7070/staff/register
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"type\": \"doctor\",\r
+
+    \  \"id\": \"d1\",\r
+
+    \  \"name\": \"Dr Chanda\",\r
+
+    \  \"email\": \"chanda@zut.ac.zm\",\r
+
+    \  \"phone\": \"0955000001\",\r
+
+    \  \"staffId\": \"ST001\",\r
+
+    \  \"department\": \"General\",\r
+
+    \  \"licenceNumber\": \"LIC001\"\r
+
+    }"
+order: 1776620815864

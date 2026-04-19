@@ -1,4 +1,4 @@
-﻿package com.meditrack.model.appointment;
+package com.meditrack.model.appointment;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
