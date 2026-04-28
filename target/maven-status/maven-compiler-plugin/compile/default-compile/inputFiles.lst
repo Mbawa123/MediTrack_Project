@@ -19,4 +19,6 @@ C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\mo
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\AppointmentService.java
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\DataStore.java
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\PatientService.java
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\PrescriptionConflictChecker.java
 C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\StaffService.java
+C:\Users\MBAWA FX\Documents\OOP\MediTrack_Project\src\main\java\com\meditrack\service\WaitingRoom.java

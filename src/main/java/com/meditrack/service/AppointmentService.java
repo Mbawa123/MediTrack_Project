@@ -7,7 +7,7 @@ import com.meditrack.model.person.*;
 import com.meditrack.model.record.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AppointmentService {
@@ -57,8 +57,9 @@ public class AppointmentService {
         }
     }
 
-    // ABSTRACTION: canPrescribe() from StaffAction interface
-    // Doctor = true, Nurse = false — no instanceof needed
+    // CHERRY 3 — No instanceof, no if/else type checks
+    // canPrescribe() is defined in StaffAction interface
+    // Doctor returns true, Nurse returns false — the OBJECT decides
     public Diagnosis addDiagnosis(String patientId, String staffId,
                                   String description) {
         Patient patient = patientService.getPatient(patientId);
@@ -71,13 +72,33 @@ public class AppointmentService {
         return d;
     }
 
+    // CHERRY 2 — Prescription Conflict Check
+    // Before saving, we check if new medication conflicts with existing ones
     public Prescription addPrescription(String patientId, String staffId,
                                         String medication, String dosage) {
         Patient patient = patientService.getPatient(patientId);
         MedicalStaff staff = staffService.getStaff(staffId);
+
+        // CHERRY 3 — canPrescribe() from interface, no instanceof
         if (!staff.canPrescribe())
             throw new ForbiddenException(
                     staff.getRole() + " cannot write prescriptions. Doctor required.");
+
+        // CHERRY 2 — Check for drug conflicts before saving
+        List<String> existingMeds = patient.getMedicalRecord()
+                .getPrescriptions().stream()
+                .map(Prescription::getMedication)
+                .collect(Collectors.toList());
+
+        String conflict = store.getConflictChecker()
+                .checkConflict(medication, existingMeds);
+
+        if (conflict != null)
+            throw new ValidationException(
+                    "Prescription conflict detected: " + medication +
+                            " conflicts with existing medication: " + conflict +
+                            ". Prescription not saved.");
+
         Prescription p = new Prescription(medication, dosage, staffId);
         patient.getMedicalRecord().addPrescription(p);
         return p;
@@ -106,5 +127,38 @@ public class AppointmentService {
         Appointment a = store.findAppointment(id);
         if (a == null) throw new NotFoundException("Appointment not found: " + id);
         return a;
+    }
+
+    // ═══════════════════════════════════════
+    // CHERRY 1 — Waiting Room methods
+    // ═══════════════════════════════════════
+    public void addToWaitingRoom(String patientId, String priorityStr, String reason) {
+        Patient patient = patientService.getPatient(patientId);
+        WaitingRoom.Priority priority;
+        try {
+            priority = WaitingRoom.Priority.valueOf(priorityStr.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new ValidationException("Priority must be NORMAL or URGENT");
+        }
+        store.getWaitingRoom().addPatient(patient, priority, reason);
+    }
+
+    public WaitingRoom.WaitingPatient callNextPatient() {
+        if (store.getWaitingRoom().isEmpty())
+            throw new NotFoundException("Waiting room is empty");
+        return store.getWaitingRoom().nextPatient();
+    }
+
+    public List<Map<String, String>> getWaitingQueue() {
+        return store.getWaitingRoom().getQueue().stream()
+                .map(wp -> {
+                    Map<String, String> m = new LinkedHashMap<>();
+                    m.put("patientId", wp.getPatient().getId());
+                    m.put("name",      wp.getPatient().getName());
+                    m.put("priority",  wp.getPriority().toString());
+                    m.put("reason",    wp.getReason());
+                    return m;
+                })
+                .collect(Collectors.toList());
     }
 }
